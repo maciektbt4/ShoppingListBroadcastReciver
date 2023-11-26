@@ -24,9 +24,6 @@ class NotificationService: Service() {
     }
     private fun start(intent: Intent?){
         val item = intent?.getStringExtra("ITEM").toString()
-//        val name = intent?.getStringExtra("ITEM").toString()
-//        val amount = intent?.getStringExtra("ITEM_AMOUNT").toString()
-//        val price = intent?.getStringExtra("ITEM_PRICE").toString()
         Log.d("Notification_service","Service is running. Broadcast received:\n" +
                 "item : $item")
 
@@ -34,9 +31,6 @@ class NotificationService: Service() {
             setPackage("com.example.shoppinglist") // Specify the package name of the target application
             setClassName("com.example.shoppinglist", "com.example.shoppinglist.ui.shoppinglist.EditShoppingItem") // Specify the activity to be opened in application2
             putExtra("ITEM", item)
-//            putExtra("ITEM_NAME", name)
-//            putExtra("ITEM_AMOUNT", amount)
-//            putExtra("ITEM_PRICE", price)
             flags = Intent.FLAG_ACTIVITY_NEW_TASK
         }
 
@@ -46,12 +40,6 @@ class NotificationService: Service() {
             intentAddItem,
             PendingIntent.FLAG_UPDATE_CURRENT
         )
-
-//        val intent1 = Intent(this, MainActivity::class.java)
-//        val pendingIntent = TaskStackBuilder.create(this).run {
-//            addNextIntentWithParentStack(intent1)
-//            getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT)
-//        }
 
         val notification = NotificationCompat.Builder(this, "running_channel")
             .setSmallIcon(R.drawable.ic_launcher_foreground)

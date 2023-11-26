@@ -27,6 +27,10 @@ class MainActivity: AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         registerReceiver(itemAddedReceiver, IntentFilter("ITEM_ADDED_TO_SHOPPING_LIST"))
+        // broadcast with permissions
+//        val filter = IntentFilter("ITEM_ADDED_TO_SHOPPING_LIST")
+//        filter.addCategory(Intent.CATEGORY_DEFAULT)
+//        registerReceiver(itemAddedReceiver, filter, "com.example.shoppinglist.CUSTOM_PERMISSION", null)
     }
 
     override fun onDestroy() {
